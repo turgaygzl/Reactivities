@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj": {}
+    "c:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj": {
+    "c:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj",
+        "projectUniqueName": "c:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj",
+        "projectPath": "c:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\turga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\obj\\",
+        "outputPath": "c:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -18,4 +18,8 @@ namespace Domain;
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
+    public void remove(Activity activity)
+    {
+        throw new NotImplementedException();
     }
+}

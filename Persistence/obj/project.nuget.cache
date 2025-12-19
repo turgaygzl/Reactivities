@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ECL2424b1+4=",
+  "dgSpecHash": "MDEQ3CH/3h0=",
   "success": true,
-  "projectFilePath": "C:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Persistence\\Persistence.csproj",
+  "projectFilePath": "c:\\Users\\turga\\Desktop\\EduEnglish\\Reactivities\\Persistence\\Persistence.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\turga\\.nuget\\packages\\microsoft.data.sqlite.core\\9.0.9\\microsoft.data.sqlite.core.9.0.9.nupkg.sha512",
     "C:\\Users\\turga\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.9\\microsoft.entityframeworkcore.9.0.9.nupkg.sha512",
