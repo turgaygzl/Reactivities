@@ -10,8 +10,8 @@ type Props = {
     selectActivity: (id: string, closeEdit?: boolean) => void;
     cancelSelectActivity: () => void;
     selectedActivity: Activity | undefined;
-    onSubmit?: (activity: Activity) => void;
-    deleteActivity: (id: string) => void;
+
+
 
 }
 
@@ -19,9 +19,7 @@ export default function ActivityDashboard({
     activities,
     cancelSelectActivity,
     selectActivity,
-    selectedActivity,
-    onSubmit,
-    deleteActivity }: Props) {
+    selectedActivity }: Props) {
     const [editing, setEditing] = useState(false);
 
     return (
@@ -33,17 +31,17 @@ export default function ActivityDashboard({
                         if (closeEdit) setEditing(false);
                         selectActivity(id);
                     }}
-                    deleteActivity={deleteActivity}
+                    
                 />
             </Grid2>
             <Grid2 size={5} sx={{ position: 'sticky', top: 22, alignSelf: 'flex-start', zIndex: 1200, height: 'calc(100vh - 22px)', overflow: 'auto', }}>
                 {selectedActivity &&
                     <ActivityDetails
-                        activity={selectedActivity}
+                        selectedActivity={selectedActivity}
                         cancelSelectedActivity={cancelSelectActivity}
                         editing={editing}
                         setEditing={setEditing}
-                        onSubmit={onSubmit}
+
                     />
                 }
 

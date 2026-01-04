@@ -1,13 +1,11 @@
 import { Group } from "@mui/icons-material";
 import { useState } from "react";
 import { Box, AppBar, Toolbar, Typography, Button, Container, MenuItem, Dialog, DialogContent } from "@mui/material";
-import ActivityForm from "../../features/activities/form/ActivityForm";
+import CreateActivity from "../../features/activities/form/CreateActivity";
 
-type Props = {
-  onCreate?: (activity: Activity) => void;
-}
 
-export default function NavBar({ onCreate }: Props) {
+
+export default function NavBar() {
   const [open, setOpen] = useState(false);
 
   return (
@@ -24,7 +22,7 @@ export default function NavBar({ onCreate }: Props) {
                 <Typography variant="h4" fontWeight='bold'>Reactivities</Typography>
               </MenuItem>
             </Box>
-            <Box sx={{ display: 'flex', justifyContent:'space-between' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
               <MenuItem sx={{ fontSize: '1.1rem', textTransform: 'uppercase', fontWeight: 'bold' }}>
                 Activities
               </MenuItem>
@@ -40,14 +38,14 @@ export default function NavBar({ onCreate }: Props) {
         </Container>
 
         <Dialog open={open} onClose={() => setOpen(false)} maxWidth="sm" fullWidth>
-        
+
           <DialogContent>
-            <ActivityForm onClose={() => setOpen(false)} onSubmit={onCreate} />
+            <CreateActivity onClose={() => setOpen(false)} />
           </DialogContent>
         </Dialog>
 
       </AppBar>
     </Box>
   )
-}
+} 
 

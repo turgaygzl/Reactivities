@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Box, Button, Paper, TextField } from "@mui/material";
 import type { FormEvent } from "react";
+import { useActivities } from "../../../lib/hooks/useActivities";
 
 type Props = {
     activity?: Activity;
@@ -11,7 +12,9 @@ type Props = {
 export default function EditActivity({ activity, onClose, onSubmit }: Props) {
 
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const { updateActivity } = useActivities()
+
+    const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
 
@@ -21,8 +24,14 @@ export default function EditActivity({ activity, onClose, onSubmit }: Props) {
             data[key] = String(value);
         });
 
-        onSubmit && onSubmit(data as unknown as Activity);
-        onClose && onClose();
+        if (activity) {
+            data.id = activity.id;
+            await updateActivity.mutateAsync(data as unknown as Activity)
+            // notify parent with the updated activity so selectedActivity can be refreshed
+            onSubmit && onSubmit(data as unknown as Activity);
+            onClose && onClose();
+        }
+        // send a Partial<Activity> (only fields provided by the form)
     }
 
 
@@ -35,12 +44,16 @@ export default function EditActivity({ activity, onClose, onSubmit }: Props) {
                 <input type="hidden" name="id" value={activity?.id ?? ''} />
                 <TextField name="description" size='small' label='Description' multiline rows={3} defaultValue={activity?.description} />
                 <TextField name="category" size='small' label='Category' defaultValue={activity?.category} />
-                <TextField name="date" size='small' label='Date' type='date' InputLabelProps={{ shrink: true }} defaultValue={activity?.date} />
+                <TextField name="date" size='small' label='Date' type='date' InputLabelProps={{ shrink: true }}
+                    defaultValue={activity?.date
+                        ? new Date(activity.date).toISOString().split('T')[0]
+                        : new Date().toISOString().split('T')[0]
+                    } />
                 <TextField name="city" size='small' label='City' defaultValue={activity?.city} />
                 <TextField name="venue" size='small' label='Venue' defaultValue={activity?.venue} />
                 <Box display='flex' justifyContent='end' gap={2}>
                     <Button onClick={() => onClose && onClose()} color='inherit'>Cancel</Button>
-                    <Button type="submit" color='success' variant='contained'>Submit</Button>
+                    <Button disabled={updateActivity.isPending} type="submit" color='success' variant='contained'>Submit</Button>
                 </Box>
 
 

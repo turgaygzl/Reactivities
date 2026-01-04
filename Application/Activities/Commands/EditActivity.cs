@@ -25,7 +25,8 @@ namespace Application.Activities.Commands
                 mapper.Map(request.Activity, activity);
 
                 await context.SaveChangesAsync(cancellationToken);
-                
+
+
             }
         }
     }
