@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import { Box, Button, Paper, TextField } from "@mui/material";
+import { Box, Button, CardMedia, Paper, TextField, Typography } from "@mui/material";
 import type { FormEvent } from "react";
 import { useActivities } from "../../../lib/hooks/useActivities";
-
-type Props = {
-    activity?: Activity;
-    onClose?: () => void;
-    onSubmit?: (activity: Activity) => void;
-}
-
-export default function EditActivity({ activity, onClose, onSubmit }: Props) {
+import { useNavigate, useParams } from "react-router";
 
 
-    const { updateActivity } = useActivities()
+
+export default function EditActivity() {
+    const navigate = useNavigate();
+    const { id } = useParams();
+    const { activity, isLoadingActivity, updateActivity } = useActivities(id || '')
+
+
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -27,19 +26,25 @@ export default function EditActivity({ activity, onClose, onSubmit }: Props) {
         if (activity) {
             data.id = activity.id;
             await updateActivity.mutateAsync(data as unknown as Activity)
+
+            navigate(`/activities/${activity.id} `)
+
+
             // notify parent with the updated activity so selectedActivity can be refreshed
-            onSubmit && onSubmit(data as unknown as Activity);
-            onClose && onClose();
+
         }
         // send a Partial<Activity> (only fields provided by the form)
     }
-
+    if (!activity || isLoadingActivity) return <Typography>Loading...</Typography>
 
     return (
 
         <Paper sx={{ borderRadius: 3, borderColor: 'red', boxShadow: 'none' }}>
-
-            <Box component='form' onSubmit={handleSubmit} display='flex' flexDirection='column' gap={1.4}>
+            <CardMedia
+                component='img'
+                src={`/images/categoryImages/${activity.category}.jpg`}
+            />
+            <Box component='form' onSubmit={handleSubmit} display='flex' flexDirection='column' gap={1.4} padding={3}>
                 <TextField name="title" size='small' label='Title' defaultValue={activity?.title} />
                 <input type="hidden" name="id" value={activity?.id ?? ''} />
                 <TextField name="description" size='small' label='Description' multiline rows={3} defaultValue={activity?.description} />
@@ -52,7 +57,7 @@ export default function EditActivity({ activity, onClose, onSubmit }: Props) {
                 <TextField name="city" size='small' label='City' defaultValue={activity?.city} />
                 <TextField name="venue" size='small' label='Venue' defaultValue={activity?.venue} />
                 <Box display='flex' justifyContent='end' gap={2}>
-                    <Button onClick={() => onClose && onClose()} color='inherit'>Cancel</Button>
+                    <Button onClick={() => navigate(`/activities/${activity.id}`)} color='inherit'>Cancel</Button>
                     <Button disabled={updateActivity.isPending} type="submit" color='success' variant='contained'>Submit</Button>
                 </Box>
 

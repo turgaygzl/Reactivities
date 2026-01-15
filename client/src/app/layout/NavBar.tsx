@@ -2,6 +2,8 @@ import { Group } from "@mui/icons-material";
 import { useState } from "react";
 import { Box, AppBar, Toolbar, Typography, Button, Container, MenuItem, Dialog, DialogContent } from "@mui/material";
 import CreateActivity from "../../features/activities/form/CreateActivity";
+import { NavLink } from "react-router";
+import MenuItemLink from "../shared/components/MenuItemLink";
 
 
 
@@ -17,21 +19,21 @@ export default function NavBar() {
         <Container maxWidth='xl'>
           <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <Box>
-              <MenuItem sx={{ display: 'flex', gap: 2 }}>
+              <MenuItem component={NavLink} to='' sx={{ display: 'flex', gap: 2 }}>
                 <Group fontSize="large" />
                 <Typography variant="h4" fontWeight='bold'>Reactivities</Typography>
               </MenuItem>
             </Box>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <MenuItem sx={{ fontSize: '1.1rem', textTransform: 'uppercase', fontWeight: 'bold' }}>
+              <MenuItemLink to='/activities'>
                 Activities
-              </MenuItem>
-              <MenuItem sx={{ fontSize: '1.1rem', textTransform: 'uppercase', fontWeight: 'bold' }}>
+              </MenuItemLink>
+              <MenuItemLink to="/about">
                 About
-              </MenuItem>
-              <MenuItem sx={{ fontSize: '1.1rem', textTransform: 'uppercase', fontWeight: 'bold' }}>
+              </MenuItemLink>
+              <MenuItemLink to="/contact">
                 Contact
-              </MenuItem>
+              </MenuItemLink>
             </Box>
             <Button size='large' variant='contained' color='warning' onClick={() => setOpen(true)}>Create Activity</Button>
           </Toolbar>

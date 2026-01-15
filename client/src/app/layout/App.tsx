@@ -1,23 +1,9 @@
-import { Box, Container, CssBaseline, Typography } from '@mui/material';
-import { useState } from 'react';
+import { Box, Container, CssBaseline } from '@mui/material';
 import NavBar from './NavBar';
-import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
-import { useActivities } from '../../lib/hooks/useActivities';
+import { Outlet } from 'react-router';
 
 function App() {
 
-  const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
-  const { activities, isLoading } = useActivities()
-
-
-  const handleSelectedActivity = (id: string) => {
-    setSelectedActivity(activities!.find(x => x.id === id));
-  }
-
-
-  const handleCancelSelectActivity = () => {
-    setSelectedActivity(undefined);
-  }
 
 
 
@@ -27,20 +13,7 @@ function App() {
       <CssBaseline />
       <NavBar />
       <Container maxWidth='xl' sx={{ mt: 3 }}>
-        {isLoading ? (
-          <Typography>Loading...</Typography>
-        ) : (!activities || activities.length === 0) ? (
-          <Typography>There is no Activity</Typography>
-        ) : (
-          <ActivityDashboard
-            activities={activities}
-            selectActivity={handleSelectedActivity}
-            cancelSelectActivity={handleCancelSelectActivity}
-            selectedActivity={selectedActivity}
-            
-          />
-        )}
-
+        <Outlet />
       </Container>
 
     </Box >

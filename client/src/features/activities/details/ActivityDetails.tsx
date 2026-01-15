@@ -1,20 +1,15 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material"
-import EditActivity from "../form/EditActivity";
+import { Link, useNavigate, useParams } from "react-router";
 import { useActivities } from "../../../lib/hooks/useActivities";
 
-type Props = {
-    selectedActivity: Activity
-    cancelSelectedActivity: () => void
-    editing: boolean
-    setEditing: (v: boolean) => void
-    onSubmit?: (activity: Activity) => void;
 
-}
 
-export default function ActivityDetails({ selectedActivity, cancelSelectedActivity, editing, setEditing, onSubmit }: Props) {
-    
-    const { activities , updateActivity} = useActivities();
-    const activity = activities?.find(x => x.id === selectedActivity.id);
+export default function ActivityDetails() {
+    const navigate = useNavigate();
+    const { id } = useParams();
+    const { activity, isLoadingActivity } = useActivities(id || '');
+
+    if (isLoadingActivity) return <Typography>Loading...</Typography>
     if (!activity) return <Typography>Loading...</Typography>
     return (
         <>
@@ -25,20 +20,13 @@ export default function ActivityDetails({ selectedActivity, cancelSelectedActivi
                 />
 
                 <CardContent>
-                    {editing ? (
-                        <EditActivity activity={activity} onClose={() => setEditing(false)} onSubmit={onSubmit} />
-
-                    ) : (
-                        <>
-                            <Typography variant="h5">{activity.title}</Typography>
-                            <Typography variant="subtitle1" fontWeight='light'>{activity.date}</Typography>
-                            <Typography variant="body1">{activity.description}</Typography>
-                            <CardActions>
-                                <Button disabled={updateActivity.isPending} color="primary" onClick={() => setEditing(true)}>Edit</Button>
-                                <Button onClick={cancelSelectedActivity} color="inherit" >Cancel</Button>
-                            </CardActions>
-                        </>
-                    )}
+                    <Typography variant="h5">{activity.title}</Typography>
+                    <Typography variant="subtitle1" fontWeight='light'>{activity.date}</Typography>
+                    <Typography variant="body1">{activity.description}</Typography>
+                    <CardActions>
+                        <Button component={Link} to={`/editActivity/${activity.id}`}>Edit</Button>
+                        <Button onClick={() => { navigate('/activities') }} color="inherit" >Cancel</Button>
+                    </CardActions>
                 </CardContent>
 
             </Card>

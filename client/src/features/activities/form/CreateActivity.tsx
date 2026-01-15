@@ -10,8 +10,8 @@ type Props = {
 }
 
 export default function CreateActivity({ onClose }: Props) {
-
-    const { createActivity } = useActivities()
+   
+    const { createActivity } = useActivities('')
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -24,7 +24,10 @@ export default function CreateActivity({ onClose }: Props) {
         });
 
 
-        await createActivity.mutateAsync(data as unknown as Activity)
+        await createActivity.mutateAsync(data as unknown as Activity, {
+         
+
+        })
 
         onClose && onClose();
 
