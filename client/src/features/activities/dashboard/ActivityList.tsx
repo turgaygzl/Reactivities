@@ -1,13 +1,14 @@
 import { Box, Typography } from "@mui/material";
 import ActivityCard from "./ActivityCard";
 import { useActivities } from "../../../lib/hooks/useActivities";
+import { colors } from "../../../lib/colors";
 
 
 export default function ActivityList() {
 
     const { activities, isLoading } = useActivities('')
 
-    if (!activities || isLoading) return <Typography>Loading...</Typography>
+    if (!activities || isLoading) return <Typography sx={{color:colors.base.light}}>Loading...</Typography>
 
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>

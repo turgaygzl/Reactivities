@@ -1,0 +1,86 @@
+@font-face {
+    font-family: "DM_Sans";
+    src: local("DMSans-Regular"),
+        url('./fonts/DMSans-Regular.ttf');
+}
+
+* {
+    font-family: 'Dm_Sans', sans-serif !important;
+}
+
+/* Webkit Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #282828;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #99ca53;
+    border-radius: 6px;
+    margin: 15px 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #adeb55;
+}
+
+/* Scrollbar Buttons - Unicode triangles */
+::-webkit-scrollbar-button {
+    height: 15px;
+    width: 16px;
+    background-color: #282828;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 8px 8px;
+}
+
+::-webkit-scrollbar-button:start:increment {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2399ca53" d="M7 14l5-5 5 5H7z"/></svg>');
+    background-size: 10px 10px;
+}
+
+::-webkit-scrollbar-button:end:decrement {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%2399ca53" d="M7 10l5 5 5-5H7z"/></svg>');
+    background-size: 10px 10px;
+}
+
+.react-calendar {
+    border: none !important;
+    width: 100% !important;
+    margin: auto;
+    background-color: transparent !important;
+    padding: 10px;
+
+}
+
+.react-calendar__navigation {
+    display: flex;
+    justify-content: space-between;
+
+    .react-calendar__navigation__label {
+        font-weight: bold;
+        font-size: 1.2em;
+    }
+
+    .react-calendar__navigation__arrow {
+        font-size: 1.5em;
+        color: #2024ff !important;
+    }
+}
+
+.react-calendar__tile {
+    padding: 10px;
+    border-radius: 4px;
+}
+
+
+.react-calendar__tile--now {
+    background-color: rgb(160 232 57 / 52%) !important;
+}
+
+.react-calendar__tile--active {
+    background-color: #2024ff !important;
+}

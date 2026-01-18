@@ -1,5 +1,6 @@
 import { Grid2 } from "@mui/material";
 import ActivityList from "./ActivityList";
+import ActivityFilters from "./ActivityFilters";
 
 
 
@@ -13,7 +14,7 @@ export default function ActivityDashboard() {
                 <ActivityList />
             </Grid2>
             <Grid2 size={5} sx={{ position: 'sticky', top: 22, alignSelf: 'flex-start', zIndex: 1200, height: 'calc(100vh - 22px)', overflow: 'auto', }}>
-                Activity filters go here
+                <ActivityFilters />
             </Grid2>
 
         </Grid2>)

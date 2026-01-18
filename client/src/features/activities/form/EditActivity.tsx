@@ -3,6 +3,7 @@ import { Box, Button, CardMedia, Paper, TextField, Typography } from "@mui/mater
 import type { FormEvent } from "react";
 import { useActivities } from "../../../lib/hooks/useActivities";
 import { useNavigate, useParams } from "react-router";
+import { colors } from "../../../lib/colors";
 
 
 
@@ -35,7 +36,7 @@ export default function EditActivity() {
         }
         // send a Partial<Activity> (only fields provided by the form)
     }
-    if (!activity || isLoadingActivity) return <Typography>Loading...</Typography>
+    if (!activity || isLoadingActivity) return <Typography sx={{color:colors.base.light}}>Loading...</Typography>
 
     return (
 
