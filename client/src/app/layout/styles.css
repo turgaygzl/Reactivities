@@ -8,6 +8,21 @@
     font-family: 'Dm_Sans', sans-serif !important;
 }
 
+/* Gradient Shift Animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 /* Webkit Scrollbar Styling */
 ::-webkit-scrollbar {
     width: 7px;
@@ -52,8 +67,20 @@
     width: 100% !important;
     margin: auto;
     background-color: transparent !important;
-    padding: 10px;
+    padding: 5px;
+}
 
+.react-calendar.compact-calendar {
+    font-size: 0.85em;
+}
+
+.react-calendar.compact-calendar .react-calendar__navigation {
+    margin-bottom: 0.3em;
+}
+
+.react-calendar.compact-calendar .react-calendar__navigation button {
+    min-height: 30px;
+    padding: 4px;
 }
 
 .react-calendar__navigation {
@@ -62,17 +89,17 @@
 
     .react-calendar__navigation__label {
         font-weight: bold;
-        font-size: 1.2em;
+        font-size: 1em;
     }
 
     .react-calendar__navigation__arrow {
-        font-size: 1.5em;
+        font-size: 1.2em;
         color: #2024ff !important;
     }
 }
 
 .react-calendar__tile {
-    padding: 10px;
+    padding: 6px;
     border-radius: 4px;
 }
 
@@ -83,4 +110,77 @@
 
 .react-calendar__tile--active {
     background-color: #2024ff !important;
+}
+
+/* Solid UI Enhancements */
+.MuiCard-root {
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.MuiCard-root:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+}
+
+.MuiButton-root {
+    transition: all 0.2s ease !important;
+}
+
+.MuiButton-contained:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(160, 232, 57, 0.25) !important;
+}
+
+.MuiPaper-root {
+    backdrop-filter: blur(10px);
+}
+
+.MuiChip-root {
+    font-weight: 600 !important;
+}
+
+/* Solid Input Styling */
+.MuiOutlinedInput-root {
+    border-radius: 12px !important;
+    transition: all 0.2s ease !important;
+}
+
+.MuiOutlinedInput-root:hover {
+    box-shadow: 0 0 0 2px rgba(160, 232, 57, 0.15);
+}
+
+.MuiOutlinedInput-root.Mui-focused {
+    box-shadow: 0 0 0 3px rgba(160, 232, 57, 0.25);
+}
+
+/* Solid Menu Item Styling */
+.MuiMenuItem-root {
+    border-radius: 8px !important;
+    margin: 2px 8px !important;
+    transition: all 0.15s ease !important;
+}
+
+.MuiMenuItem-root:hover {
+    background-color: rgba(160, 232, 57, 0.12) !important;
+}
+
+/* Solid Avatar Styling */
+.MuiAvatar-root {
+    border: 2px solid rgba(160, 232, 57, 0.3);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Solid Divider Styling */
+.MuiDivider-root {
+    border-color: rgba(160, 232, 57, 0.15) !important;
+}
+
+/* Solid List Item Styling */
+.MuiListItem-root {
+    border-radius: 8px !important;
+    transition: background-color 0.15s ease !important;
+}
+
+.MuiListItem-root:hover {
+    background-color: rgba(160, 232, 57, 0.08) !important;
 }

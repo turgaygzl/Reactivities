@@ -2,6 +2,7 @@
 import { Box, Button, CardMedia, Paper, TextField, Typography } from "@mui/material";
 import type { FormEvent } from "react";
 import { useActivities } from "../../../lib/hooks/useActivities";
+import { useActivityMutations } from "../../../lib/hooks/useActivityMutations";
 import { useNavigate, useParams } from "react-router";
 import { colors } from "../../../lib/colors";
 
@@ -10,7 +11,8 @@ import { colors } from "../../../lib/colors";
 export default function EditActivity() {
     const navigate = useNavigate();
     const { id } = useParams();
-    const { activity, isLoadingActivity, updateActivity } = useActivities(id || '')
+    const { activity, isLoadingActivity } = useActivities(id || '')
+    const { updateActivity } = useActivityMutations()
 
 
 
@@ -36,7 +38,7 @@ export default function EditActivity() {
         }
         // send a Partial<Activity> (only fields provided by the form)
     }
-    if (!activity || isLoadingActivity) return <Typography sx={{color:colors.base.light}}>Loading...</Typography>
+    if (!activity || isLoadingActivity) return <Typography sx={{ color: colors.base.light }}>Loading...</Typography>
 
     return (
 

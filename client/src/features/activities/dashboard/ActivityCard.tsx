@@ -21,7 +21,14 @@ export default function ActivityCard({ activity }: Props) {
     const color = isHost ? 'secondary' : isGoing ? 'warning' : 'default';
 
     return (
-        <Card elevation={2} sx={{ color: colors.base.light, borderRadius: 4, boxShadow: 'none', backgroundColor: colors.surface.a10 }}>
+        <Card elevation={3} sx={{ 
+            color: colors.base.light, 
+            borderRadius: 4, 
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)', 
+            backgroundColor: colors.surface.a10,
+            border: `1px solid ${colors.surface.a30}`,
+            overflow: 'hidden'
+        }}>
             <Box display='flex' alignItems='center' justifyContent='space-between'>
                 <CardHeader avatar={<Avatar sx={{ height: 80, width: 80 }} />}
                     title={
@@ -68,20 +75,20 @@ export default function ActivityCard({ activity }: Props) {
                     to={`/activities/${activity.id}`}
                     size='medium'
                     variant='contained'
-
                     sx={{
-
                         color: colors.base.light,
-                        background: 'none',
-                        border: `1px solid ${colors.surface.a30}`,
+                        background: `linear-gradient(135deg, ${colors.surface.a20} 0%, ${colors.surface.a30} 100%)`,
+                        border: `1px solid ${colors.primary.a20}`,
                         display: 'flex',
-                        boxShadow: 'none',
+                        boxShadow: '0 2px 8px rgba(0, 0, 0, 0.2)',
                         justifySelf: 'self-end',
                         borderRadius: 3,
                         textTransform: 'capitalize',
+                        fontWeight: 600,
                         '&:hover': {
-                            background: colors.surface.a20,
-
+                            background: `linear-gradient(135deg, ${colors.surface.a30} 0%, ${colors.surface.a40} 100%)`,
+                            boxShadow: '0 4px 15px rgba(160, 232, 57, 0.2)',
+                            borderColor: colors.primary.a10
                         }
                     }}>
                     <VisibilityRounded sx={{ mr: 1, color: colors.primary.a40 }} />

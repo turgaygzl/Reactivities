@@ -5,7 +5,13 @@ export default function ActivityDetailsSidebar() {
     const isHost = true;
     return (
 
-        <Box sx={{borderRadius: 3, overflow: 'hidden' , border:`3px solid ${colors.primary.a10}`}}>
+        <Box sx={{
+            borderRadius: 3,
+            overflow: 'hidden',
+            border: `3px solid ${colors.primary.a10}`,
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.3)',
+            background: colors.surface.a10
+        }}>
             <Paper
                 sx={{
                     borderRadius: 0,
@@ -20,7 +26,7 @@ export default function ActivityDetailsSidebar() {
                     2 people going
                 </Typography>
             </Paper>
-            <Paper sx={{ padding: 2, borderRadius: 3,  background:'none',  }}>
+            <Paper sx={{ padding: 2, borderRadius: 3, background: 'none', }}>
                 <Grid2 container alignItems="center">
                     <Grid2 size={8}>
                         <List sx={{ display: 'flex', flexDirection: 'column' }}>

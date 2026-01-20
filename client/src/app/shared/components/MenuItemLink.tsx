@@ -7,6 +7,7 @@ export default function MenuItemLink({ children, to }: { children: ReactNode, to
     return (
         <MenuItem
             component={NavLink} to={to}
+
             sx={{
                 fontSize: '1.2rem',
                 fontWeight: 500,
@@ -29,8 +30,8 @@ export default function MenuItemLink({ children, to }: { children: ReactNode, to
 
                 },
                 '&:hover': {
-                    background: 'none',
-
+                    background: 'transparent !important',
+                    backgroundColor: 'transparent !important'
                 },
                 '&:hover::after': {
                     content: '""',

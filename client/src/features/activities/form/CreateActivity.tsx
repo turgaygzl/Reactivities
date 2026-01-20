@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 import { Box, Button, Paper, TextField, Typography } from "@mui/material";
 import type { FormEvent } from "react";
-import { useActivities } from "../../../lib/hooks/useActivities";
+import { useActivityMutations } from "../../../lib/hooks/useActivityMutations";
 
 
 type Props = {
@@ -10,8 +10,8 @@ type Props = {
 }
 
 export default function CreateActivity({ onClose }: Props) {
-   
-    const { createActivity } = useActivities('')
+
+    const { createActivity } = useActivityMutations()
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -25,7 +25,7 @@ export default function CreateActivity({ onClose }: Props) {
 
 
         await createActivity.mutateAsync(data as unknown as Activity, {
-         
+
 
         })
 

@@ -16,9 +16,21 @@ export default function ActivityDetailsHeader({ activity }: Props) {
   const loading = false;
 
   return (
-    <Card sx={{ boxShadow:'none', position: 'relative', 
-    backgroundColor: 'transparent', overflow: 'hidden', 
-    borderRadius: 4, borderBottomLeftRadius:0, borderBottomRightRadius:0 }}>
+    <Card sx={{
+      boxShadow: '0 8px 30px rgba(0, 0, 0, 0.4)',
+      position: 'relative',
+      backgroundColor: 'transparent',
+      overflow: 'hidden',
+      borderRadius: 4,
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+      border: `1px solid ${colors.surface.a30}`,
+      borderBottom: 'none',
+      transition: 'none !important',
+      '&:hover': {
+        transform: 'none !important'
+      }
+    }}>
       {isCancelled && (
         <Badge
           sx={{ position: 'absolute', left: 40, top: 20, zIndex: 1000 }}
@@ -31,6 +43,7 @@ export default function ActivityDetailsHeader({ activity }: Props) {
         height="300"
         image={`/images/categoryImages/${activity.category}.jpg`}
         alt={'travel image'}
+
       />
       <Box sx={{
         position: 'absolute',

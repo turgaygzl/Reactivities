@@ -7,9 +7,12 @@ export default function ActivityDetailsChat() {
 
         <Card sx={{
             borderRadius: 4,
-            backgroundColor: '#eeeee',
+            backgroundColor: '#eeeeee',
             color: colors.base.dark,
-            mb: 2
+            mb: 2,
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.25)',
+            border: `2px solid ${colors.primary.a30}`,
+            overflow: 'hidden'
         }}>
             <Box
                 sx={{
